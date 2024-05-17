@@ -17,17 +17,16 @@
             /********************************* */
             if (isset($_GET['next'])) {
                 $algus = $_GET['next'];
+            } 
+            else if (isset($_GET['prev'])) {
+                $algus = $_GET['prev']-10;
             } else {
                 $algus = 0;
             }
                 $algus += 10;
-            /********************************* */
-            $lopp -= 10;
-            if (isset($_GET['prev'])) {
-                $lopp = $_GET['prev'];
-            } else {
-                $lopp = 0;
-            }
+                $lopp = $algus - 10;
+    
+
                 
 
             //päring mille saadan andmebaasi
