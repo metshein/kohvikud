@@ -21,16 +21,18 @@
             else if (isset($_GET['prev'])) {
                 $algus = $_GET['prev']-10;
             } else {
-                $algus = 0;
+                $algus = -10;
             }
-                $algus += 10;
-                $lopp = $algus - 10;
-    
-
-                
-
+               
             //päring mille saadan andmebaasi
-            $paring = "SELECT * FROM toidukohad LIMIT $algus,10";
+            
+            $algus += 10;
+            $lopp = $algus - 10;
+              if ($lopp < 0){
+                $lopp = 0;
+            }
+        $paring = "SELECT * FROM toidukohad LIMIT $algus,10";
+           
         }
         //saadan soovitud ühendusele minu päringu
             $valjund = mysqli_query($yhendus, $paring);
