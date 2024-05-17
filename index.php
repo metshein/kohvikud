@@ -22,12 +22,12 @@
             }
                 $algus += 10;
             /********************************* */
-            // $algus -= 10;
-            // if (isset($_GET['prev'])) {
-            //     $algus = $_GET['prev'];
-            // } else {
-            //     $algus = 0;
-            // }
+            $lopp -= 10;
+            if (isset($_GET['prev'])) {
+                $lopp = $_GET['prev'];
+            } else {
+                $lopp = 0;
+            }
                 
 
             //päring mille saadan andmebaasi
@@ -62,7 +62,7 @@
                 }
             ?>
         </table>
-        <a href="?prev=10">&lt;&lt;Eelmised</a>  
+        <a href="?prev=<?php echo $lopp;  ?>">&lt;&lt;Eelmised</a>  
         <a href="?next=<?php echo $algus;  ?>">Järgmised&gt;&gt;</a> 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
