@@ -21,13 +21,27 @@ SET time_zone = "+00:00";
 -- Andmebaas: `kohvikud`
 --
 
+CREATE DATABASE IF NOT EXISTS `kohvikud`;
+
+USE `kohvikud`;
+
+
+--
+-- Kasutaja lisamine
+--
+
+CREATE USER IF NOT EXISTS 'mario'@'localhost' IDENTIFIED BY 'mario';
+GRANT ALL PRIVILEGES ON `kohvikud`.* TO 'mario'@'localhost';
+FLUSH PRIVILEGES;
+
+
 -- --------------------------------------------------------
 
 --
 -- Tabeli struktuur tabelile `hinnangud`
 --
 
-CREATE TABLE `hinnangud` (
+CREATE TABLE IF NOT EXISTS `hinnangud` (
   `id` int(6) NOT NULL,
   `nimi` varchar(255) NOT NULL,
   `kommentaar` varchar(255) NOT NULL,
@@ -147,7 +161,7 @@ INSERT INTO `hinnangud` (`id`, `nimi`, `kommentaar`, `hinnang`, `toidukohad_id`)
 -- Tabeli struktuur tabelile `toidukohad`
 --
 
-CREATE TABLE `toidukohad` (
+CREATE TABLE IF NOT EXISTS `toidukohad` (
   `id` int(6) NOT NULL,
   `nimi` varchar(255) NOT NULL,
   `asukoht` varchar(255) NOT NULL,
@@ -293,6 +307,8 @@ ALTER TABLE `hinnangud`
 ALTER TABLE `toidukohad`
   MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 COMMIT;
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
