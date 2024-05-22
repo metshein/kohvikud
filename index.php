@@ -63,12 +63,13 @@
                 <th>Keskmine hinne</th>
                 <th>Hinnatud (korda)</th>
             </tr>
+            
         <?php
         // sikutame andmebaasist kõik vastuse
         while($rida = mysqli_fetch_assoc($valjund)){
         ?>
             <tr>
-                <td><?php echo $rida['nimi']; ?></td>
+                <td><a href="kohvik.php?id=<?php echo $rida['id']; ?>"><?php echo $rida['nimi']; ?></a></td>
                 <td><?php echo $rida['asukoht']; ?></td>
                 <td><?php echo $rida['keskmine_hinne']; ?></td>
                 <td><?php echo $rida['hinnatud']; ?></td>
