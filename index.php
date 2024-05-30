@@ -6,7 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kohvikud</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.min.css" />
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRrST7a8J5yL6P1lAoXfD8DymxaCmr6On6fT8Dz+r" crossorigin="anonymous"></script>
+    
+    <!-- DataTables JS CDN -->
+    <script src="https://cdn.datatables.net/2.0.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>  
+</head>
   <body>
     <?php
         // otsing
@@ -56,14 +70,16 @@
             </div>
         </div>
 
-        <table class="table table-sm">
+        <table id="example" class="table table-sm">
+        <thead>
             <tr>
                 <th>Nimi</th>
                 <th>Asukoht</th>
                 <th>Keskmine hinne</th>
                 <th>Hinnatud (korda)</th>
             </tr>
-            
+            </thead>
+        <tbody>
         <?php
         // sikutame andmebaasist kõik vastuse
         while($rida = mysqli_fetch_assoc($valjund)){
@@ -77,6 +93,7 @@
         <?php
         }
         ?>
+        </tbody>
         </table>
         <div class="d-flex justify-content-end">
             <a href="?prev=<?php echo $prev; ?>" class="btn btn-primary <?php if ($algus == 0) echo 'disabled'; ?>" role="button" aria-disabled="<?php if ($algus == 0) echo 'true'; ?>">&lt;&lt; Eelmised</a>
